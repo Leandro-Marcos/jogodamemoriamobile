@@ -49,7 +49,7 @@ function ControllerLogicGame(){
 	var firstSelected;
 	var secondSelected;
 	var block = false;
-	var TIME_SLEEP_BETWEEN_INTERVAL = 2000;
+	var TIME_SLEEP_BETWEEN_INTERVAL = 1000;
 	var eventController = this;
 
 	this.addEventListener =  function (eventName, callback){
@@ -156,11 +156,12 @@ function CardGame (cards , controllerLogicGame,scoreBoard){
 					}else if(count < 10){
 						count = "0" + count;
 					} */
-					setInterval(function (){cardGame.show()},5000);
+			var intervalo = setInterval(function (){cardGame.show()},7000);
 			//}
-			for(var contador = 0; contador < 41  ;contador++ ){
+			for(var contador = 0; contador < 41; contador++ ){
 			cards[contador].visible = false;
 			}
+			clearInterval(intervalo);
 			
 		};
 	}
