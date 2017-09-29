@@ -28,7 +28,7 @@ function Card(picture){
 	var FOLDER_IMAGES = 'resources/'
 	var IMAGE_QUESTION  = "question.png"
 	this.picture = picture;
-	this.visible = false;
+	this.visible = true;
 	this.block = false;
 
 	this.equals =  function (cardGame){
@@ -42,14 +42,14 @@ function Card(picture){
 	}
 	this.getQuestionImage =  function(){
 		return FOLDER_IMAGES+IMAGE_QUESTION;
-	}
+	}	
 }
 
 function ControllerLogicGame(){
 	var firstSelected;
 	var secondSelected;
 	var block = false;
-	var TIME_SLEEP_BETWEEN_INTERVAL = 1500;
+	var TIME_SLEEP_BETWEEN_INTERVAL = 2000;
 	var eventController = this;
 
 	this.addEventListener =  function (eventName, callback){
@@ -88,7 +88,6 @@ function ControllerLogicGame(){
 			eventController["show"]();
 		};
 	};
-
 }
 
 function CardGame (cards , controllerLogicGame,scoreBoard){
@@ -147,7 +146,24 @@ function CardGame (cards , controllerLogicGame,scoreBoard){
 			game.appendChild(br);
 		}
 	}
-}
+
+		this.viraCarta = function(){
+/* 			var count = 5;
+			while ((count - 1) >= 0){
+				count -= 1;
+				if (count == 0) {
+					count = "fim";
+					}else if(count < 10){
+						count = "0" + count;
+					} */
+					setInterval(function (){cardGame.show()},5000);
+			//}
+			for(var contador = 0; contador < 41  ;contador++ ){
+			cards[contador].visible = false;
+			}
+			
+		};
+	}
 
 function BuilderCardGame(){
 	var pictures = new Array (
@@ -211,5 +227,7 @@ function GameControl (){
 GameControl.createGame = function(){
 	var builderCardGame =  new BuilderCardGame();
 	cardGame = builderCardGame.doCardGame();
+	//cardGame.start();
 	cardGame.show();
+	cardGame.viraCarta();
 }
