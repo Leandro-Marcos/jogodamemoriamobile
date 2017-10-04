@@ -96,6 +96,8 @@ function CardGame (cards , controllerLogicGame,scoreBoard){
 	this.cards = cards;
 	var logicGame = controllerLogicGame;
 	var scoreBoardGameControl = scoreBoard;
+	var pontos = 20;
+	var cartas = 0;
 
 	this.clear = function (){
 		var game = document.getElementById("game");
@@ -125,6 +127,8 @@ function CardGame (cards , controllerLogicGame,scoreBoard){
 						logicGame.addEventListener("correct",function (){
 							//scoreBoardGameControl.incrementScore();
 							//scoreBoardGameControl.updateScore();
+							cartas++;
+							if( cartas == pontos){alert("Fim de Jogo! Seu Placar foi de 200 pontos!");}
 						});
 						logicGame.addEventListener("wrong",function (){
 							//scoreBoardGameControl.decrementScore();
@@ -156,7 +160,7 @@ function CardGame (cards , controllerLogicGame,scoreBoard){
 					}else if(count < 10){
 						count = "0" + count;
 					} */
-			var intervalo = setInterval(function (){cardGame.show()},7000);
+			var intervalo = setInterval(function (){cardGame.show()},11000);
 			//}
 			for(var contador = 0; contador < 41; contador++ ){
 			cards[contador].visible = false;
